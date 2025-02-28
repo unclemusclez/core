@@ -16,19 +16,20 @@ from homeassistant.config_entries import (
     OptionsFlow,
 )
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers.typing import VolDictType
 
 from .const import (
     DOMAIN,
     LOGGER,
-    CONF_OPENWEBUI_API,  # Now API key
-    CONF_OPENWEBUI_HOST,  # Now API URL
+    CONF_OPENWEBUI_API,
+    CONF_OPENWEBUI_HOST,
     CONF_OPENWEBUI_SSL_VERIFY,
     CONF_OPENWEBUI_MODEL,
     CONF_OPENWEBUI_TOKEN,
     CONF_OPENWEBUI_MAX_TOKENS,
     CONF_OPENWEBUI_TEMPERATURE,
     CONF_OPENWEBUI_TOP_P,
-    DEFAULT_OPENWEBUI_HOST,  # Updated
+    DEFAULT_OPENWEBUI_HOST,
     DEFAULT_OPENWEBUI_MODEL,
     DEFAULT_OPENWEBUI_MAX_TOKENS,
     DEFAULT_OPENWEBUI_TEMPERATURE,
@@ -37,8 +38,8 @@ from .const import (
 
 STEP_USER_DATA_SCHEMA = vol.Schema(
     {
-        vol.Required(CONF_OPENWEBUI_API): str,  # Now API key
-        vol.Optional(CONF_OPENWEBUI_HOST, default=DEFAULT_OPENWEBUI_HOST): str,  # Now API URL
+        vol.Required(CONF_OPENWEBUI_API): str,
+        vol.Optional(CONF_OPENWEBUI_HOST, default=DEFAULT_OPENWEBUI_HOST): str,
         vol.Optional(CONF_OPENWEBUI_SSL_VERIFY, default=True): bool,
         vol.Optional(CONF_OPENWEBUI_MODEL, default=DEFAULT_OPENWEBUI_MODEL): str,
         vol.Optional(CONF_OPENWEBUI_TOKEN): str,
@@ -51,8 +52,8 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
 
 async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> None:
     """Validate the user input allows us to connect."""
-    api_url = data[CONF_OPENWEBUI_HOST]  # Now API URL
-    api_key = data[CONF_OPENWEBUI_API]  # Now API key
+    api_url = data[CONF_OPENWEBUI_HOST]
+    api_key = data[CONF_OPENWEBUI_API]
     token = data.get(CONF_OPENWEBUI_TOKEN)
     ssl_verify = data[CONF_OPENWEBUI_SSL_VERIFY]
 
@@ -137,15 +138,15 @@ class OpenWebUIOptionsFlow(OptionsFlow):
 
 def openwebui_config_option_schema(
     options: dict[str, Any] | MappingProxyType[str, Any],
-) -> dict:
+) -> VolDictType:
     """Return a schema for OpenWebUI options."""
     return {
         vol.Required(
-            CONF_OPENWEBUI_API,  # Now API key
+            CONF_OPENWEBUI_API,
             default=options.get(CONF_OPENWEBUI_API),
         ): str,
         vol.Optional(
-            CONF_OPENWEBUI_HOST,  # Now API URL
+            CONF_OPENWEBUI_HOST,
             default=options.get(CONF_OPENWEBUI_HOST, DEFAULT_OPENWEBUI_HOST),
         ): str,
         vol.Optional(
