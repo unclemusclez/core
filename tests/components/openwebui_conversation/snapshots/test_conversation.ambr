@@ -1,0 +1,26 @@
+# serializer version: 1
+# name: test_error_handling
+  dict({
+    'conversation_id': None,
+    'response': IntentResponse(
+      card=dict({}),
+      error_code=<IntentResponseErrorCode.UNKNOWN: 'unknown'>,
+      failed_results=list([]),
+      intent=None,
+      intent_targets=list([]),
+      language='en',
+      matched_states=list([]),
+      reprompt=dict({}),
+      response_type=<IntentResponseType.ERROR: 'error'>,
+      speech=dict({
+        'plain': dict({
+          'extra_data': None,
+          'speech': 'Sorry, I had a problem talking to OpenWebUI',
+        }),
+      }),
+      speech_slots=dict({}),
+      success_results=list([]),
+      unmatched_states=list([]),
+    ),
+  })
+# ---
