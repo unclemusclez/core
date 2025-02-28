@@ -1,6 +1,6 @@
 """Test helpers."""
 
-from unittest.mock import patch
+from unittest.mock import AsyncMock, patch
 
 import pytest
 

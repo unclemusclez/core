@@ -1,4 +1,4 @@
-"""The OpenWebUI Conversation integration."""
+"""The Open WebUI Conversation integration."""
 
 from __future__ import annotations
 

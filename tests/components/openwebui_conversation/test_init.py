@@ -1,12 +1,14 @@
 """Tests for the OpenWebUI Conversation integration."""
 
-from unittest.mock import patch
+from unittest.mock import AsyncMock, patch
 
 import aiohttp
 import pytest
 
 from homeassistant.core import HomeAssistant
 from homeassistant.setup import async_setup_component
+from homeassistant.core import HomeAssistant
+from tests.common import MockConfigEntry
 
 
 async def test_init_success(hass: HomeAssistant, mock_config_entry: MockConfigEntry) -> None:
