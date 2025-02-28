@@ -25,7 +25,6 @@ from .const import (
     CONF_OPENWEBUI_HOST,
     CONF_OPENWEBUI_SSL_VERIFY,
     CONF_OPENWEBUI_MODEL,
-    CONF_OPENWEBUI_TOKEN,
     CONF_OPENWEBUI_MAX_TOKENS,
     CONF_OPENWEBUI_TEMPERATURE,
     CONF_OPENWEBUI_TOP_P,
@@ -38,11 +37,10 @@ from .const import (
 
 STEP_USER_DATA_SCHEMA = vol.Schema(
     {
-        vol.Required(CONF_OPENWEBUI_API): str,
+        vol.Required(CONF_OPENWEBUI_API): str,  # API key
         vol.Optional(CONF_OPENWEBUI_HOST, default=DEFAULT_OPENWEBUI_HOST): str,
         vol.Optional(CONF_OPENWEBUI_SSL_VERIFY, default=True): bool,
         vol.Optional(CONF_OPENWEBUI_MODEL, default=DEFAULT_OPENWEBUI_MODEL): str,
-        vol.Optional(CONF_OPENWEBUI_TOKEN): str,
         vol.Optional(CONF_OPENWEBUI_MAX_TOKENS, default=DEFAULT_OPENWEBUI_MAX_TOKENS): int,
         vol.Optional(CONF_OPENWEBUI_TEMPERATURE, default=DEFAULT_OPENWEBUI_TEMPERATURE): float,
         vol.Optional(CONF_OPENWEBUI_TOP_P, default=DEFAULT_OPENWEBUI_TOP_P): float,
@@ -54,12 +52,9 @@ async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> None:
     """Validate the user input allows us to connect."""
     api_url = data[CONF_OPENWEBUI_HOST]
     api_key = data[CONF_OPENWEBUI_API]
-    token = data.get(CONF_OPENWEBUI_TOKEN)
     ssl_verify = data[CONF_OPENWEBUI_SSL_VERIFY]
 
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-    if token:
-        headers["Token"] = token
 
     async with aiohttp.ClientSession(
         headers=headers,
@@ -68,7 +63,7 @@ async def validate_input(hass: HomeAssistant, data: dict[str, Any]) -> None:
         try:
             async with session.get(api_url) as response:
                 if response.status == 401:
-                    raise ValueError("Invalid API key or token")
+                    raise ValueError("Invalid API key")
                 if response.status != 200:
                     raise ValueError(f"Failed to connect: {response.status}")
         except aiohttp.ClientError as err:
@@ -156,10 +151,6 @@ def openwebui_config_option_schema(
         vol.Optional(
             CONF_OPENWEBUI_MODEL,
             default=options.get(CONF_OPENWEBUI_MODEL, DEFAULT_OPENWEBUI_MODEL),
-        ): str,
-        vol.Optional(
-            CONF_OPENWEBUI_TOKEN,
-            default=options.get(CONF_OPENWEBUI_TOKEN, ""),
         ): str,
         vol.Optional(
             CONF_OPENWEBUI_MAX_TOKENS,
