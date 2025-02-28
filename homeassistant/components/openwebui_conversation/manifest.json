@@ -1,0 +1,12 @@
+{
+  "domain": "openwebui_conversation",
+  "name": "Open WebUI Conversation",
+  "after_dependencies": ["assist_pipeline", "intent"],
+  "codeowners": ["@unclemusclez"],
+  "config_flow": true,
+  "dependencies": ["conversation"],
+  "documentation": "https://www.home-assistant.io/integrations/openai_conversation",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "requirements": ["aiohttp"]
+}

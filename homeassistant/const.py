@@ -111,6 +111,14 @@ MAX_LENGTH_STATE_STATE: Final = 255
 SUN_EVENT_SUNSET: Final = "sunset"
 SUN_EVENT_SUNRISE: Final = "sunrise"
 
+# # Existing constants remain unchanged, adding new ones:
+# CONF_OPENWEBUI_TOKEN: Final = "openwebui_token" 
+# CONF_OPENWEBUI_API: Final = "openwebui_api"  # Full API URL (e.g., http://localhost:3000/api/chat/completions)
+# CONF_OPENWEBUI_HOST: Final = "openwebui_host"                    # Hostname or IP (e.g., localhost or 192.168.1.100)
+# CONF_OPENWEBUI_SSL_VERIFY: Final = "openwebui_ssl_verify"        # Boolean to enable/disable SSL verification
+# CONF_OPENWEBUI_MODEL: Final = "openwebui_model"          # Default model for chat completions
+# CONF_OPENWEBUI_TOKEN: Final = "openwebui_token"          # Optional additional token
+
 # #### CONFIG ####
 CONF_ABOVE: Final = "above"
 CONF_ACCESS_TOKEN: Final = "access_token"

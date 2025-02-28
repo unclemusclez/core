@@ -1057,6 +1057,8 @@ build.json @home-assistant/supervisor
 /homeassistant/components/open_meteo/ @frenck
 /tests/components/open_meteo/ @frenck
 /homeassistant/components/openai_conversation/ @balloob
+/homeassistant/components/openwebui_conversation/ @unclemusclez
+/tests/components/openwebui_conversation/ @unclemusclez
 /tests/components/openai_conversation/ @balloob
 /homeassistant/components/openerz/ @misialq
 /tests/components/openerz/ @misialq
