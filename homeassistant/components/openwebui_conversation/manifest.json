@@ -5,7 +5,8 @@
   "codeowners": ["@unclemusclez"],
   "config_flow": true,
   "dependencies": ["conversation"],
-  "documentation": "https://www.home-assistant.io/integrations/openai_conversation",
+  "documentation": "https://www.home-assistant.io/integrations/openweui_conversation",
   "integration_type": "service",
-  "iot_class": "cloud_polling"
+  "iot_class": "cloud_polling",
+  "requirements": ["aiohttp"]
 }

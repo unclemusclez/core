@@ -431,6 +431,7 @@ FLOWS = {
         "opentherm_gw",
         "openuv",
         "openweathermap",
+        "openwebui_conversation",
         "opower",
         "oralb",
         "osoenergy",
