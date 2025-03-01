@@ -2,7 +2,7 @@
 
 import logging
 
-DOMAIN = "openwebui"
+DOMAIN = "openwebui_conversation"
 LOGGER = logging.getLogger(__package__)
 
 # Configuration keys
